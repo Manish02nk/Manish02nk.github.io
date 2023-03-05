@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>
+        Sdudies Space Pro.
+    </title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        document.addEventListener('readystatechange', async event => {
+
+            const res = await fetch('https://firestore.googleapis.com/v1/projects/studyspacce/databases/(default)/documents/subjectPosts')
+
+            const data = await res.json()
+
+            const list = data.documents;
+
+            for (let i = 0; i < list.length; i++) {
+                const item = list[i];
+
+                var card = document.createElement('div');
+                card.setAttribute("class", "card");
+
+                var image = document.createElement('img');
+                image.src = item.fields.image.stringValue;
+
+                var title = document.createElement('h3');
+                title.innerText = item.fields.title.stringValue;
+
+                var category = document.createElement('p');
+                category.innerText = item.fields.category.stringValue;
+
+                var btn = document.createElement('a')
+                btn.href = item.fields.pdf.stringValue;
+                btn.target = '_blank'
+                btn.innerText = 'Open PDF'
+
+                card.appendChild(image)
+                card.appendChild(title)
+                card.appendChild(category)
+                card.appendChild(btn)
+
+                document.getElementById('box').appendChild(card);
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <h1> Sdudies Space Pro...😎😁</h1>
+
+    <div id="box">
+    </div>
+
+</body>
+
+</html>
