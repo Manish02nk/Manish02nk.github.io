@@ -2,7 +2,7 @@
 
 <head>
     <title>
-        Sdudies Pro.😁😎.
+        Studies Pro.😁😎.
     </title>
     <link rel="stylesheet" href="style.css">
     <script>
@@ -29,15 +29,18 @@
                 var category = document.createElement('p');
                 category.innerText = item.fields.category.stringValue;
 
+                var button = document.createElement('button')
                 var btn = document.createElement('a')
                 btn.href = item.fields.pdf.stringValue;
                 btn.target = '_blank'
                 btn.innerText = 'Open PDF'
 
+                button.appendChild(btn)
+
                 card.appendChild(image)
                 card.appendChild(title)
                 card.appendChild(category)
-                card.appendChild(btn)
+                card.appendChild(button)
 
                 document.getElementById('box').appendChild(card);
             }
